@@ -1,0 +1,2176 @@
+/* bodyのデフォルトを定義 */
+body {
+  text-rendering: optimizeSpeed; //webフォントレンダリングの際に速さを重視する
+  line-height: 1.8;
+  font-family: "Noto Serif JP", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体",Meiryo,sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  font-feature-settings: "palt";
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
+}
+
+/* marginとpaddingを削除 */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd,
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+/* pが連続したら段落を空ける */
+p+p {
+  margin-top: 1em;
+}
+
+/* list-styleを削除 */
+ul,
+ol {
+  list-style: none;
+}
+
+/* imgとpictureタグの設定 */
+img,
+picture {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+/* 各ブラウザやOSの設定で動きの制限をしている場合、すべてのアニメーションとトランジションを削除 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* aタグのテキストカラーを親要素から継承と、ホバー時のアニメーション */
+a {
+  color: inherit;
+  @media screen and (min-width: 768px) {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+  &:hover, &:focus {
+    text-decoration: none;
+    color: inherit;
+    @media screen and (min-width: 768px) {
+      opacity: 0.7;
+      text-decoration: none;
+    }
+  }
+  &:hover img {
+    @media screen and (min-width: 768px) {
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+      -o-transition: all 0.5s;
+      transition: all 0.5s;
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+@font-face {
+  font-family: "Noto Serif JP";
+  font-style: normal;
+  font-weight: 200;
+  src: url("../fonts/NotoSerifJP-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Noto Serif JP";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/NotoSerifJP-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Noto Serif JP";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/NotoSerifJP-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Noto Serif JP";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/NotoSerifJP-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Bodoni Moda";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/BodoniModa-VariableFont_opsz,wght.ttf");
+}
+
+@font-face {
+  font-family: "Bodoni Moda";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/BodoniModa-VariableFont_opsz,wght.ttf");
+}
+
+@font-face {
+  font-family: "Bodoni Moda";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/BodoniModa-VariableFont_opsz,wght.ttf");
+}
+
+// headerスタイル
+header {
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  &.header-sub {
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    .navigation-link {
+      color: #fff;
+      mix-blend-mode: difference;
+
+      &::before {
+        background-image: url("../img/icn_arrow_white.webp");
+      }
+    }
+
+    .header-button {
+      border-color: transparent;
+      background: #fff;
+    }
+
+    .header-link {
+      border-bottom-color: #fff;
+      color: #fff;
+
+      &::before {
+        background-image: url("../img/icn_external_white.webp");
+      }
+    }
+  }
+
+  &.scrolled {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background-color: rgba(#fff, 0.7);
+    .header-logo {
+      display: none;
+      @media (min-width: 768px) {
+        display: none;
+      }
+    }
+    .header-right {
+      margin-left: auto;
+      .header-link {
+        @media (min-width: 768px) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .header-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    @media (min-width: 768px) {
+      padding: 31px 50px 22px 95px;
+    }
+
+    
+    align-items: center;
+    padding: 15px 20px;
+    
+
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      padding: 31px 30px 22px 30px
+    }
+  }
+
+  .header-logo {
+    display: block;
+    font-family: "Yu Gothic Medium", "游ゴシック Medium", yugothic, "游ゴシック体", sans-serif;
+    font-size: 16px;
+    color: #1b6f51;
+
+    @media (min-width: 768px) {
+      width: 121px;
+      margin-top: 65px;
+      font-size: 24px;
+    }
+
+    width: 100px;
+
+    h1 {
+      font-size: 16px;
+      @media (min-width: 768px) {
+        font-size: 24px;
+      }
+    }
+  }
+
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .header-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 13px;
+    letter-spacing: .075em;
+
+    li {
+      margin-left: 33px;
+      display: none;
+      @media (min-width: 768px) {
+        display: block;
+      }
+      &.sns {
+        display: block;
+        margin-left: 8px;
+        @media (min-width: 768px) {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+
+  .navigation-link {
+    position: relative;
+    padding-right: 26px;
+    color: #fff;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 18px;
+      height: 10px;
+      margin-top: -5px;
+      background: url("../img/icn_arrow_white.webp") center/contain no-repeat;
+
+      .is-tablet & {
+        margin-top: -4px;
+      }
+    }
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+
+    @media (min-width: 768px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  .header-link {
+    display: table;
+    position: relative;
+    margin-left: auto;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: .075em;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 4px;
+      right: 0;
+      width: 14px;
+      height: 14px;
+      background: url("../img/icn_external.webp") center/contain no-repeat;
+    }
+  }
+
+  .header-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 125px;
+    height: 34px;
+    margin-left: 26px;
+    padding: 0 5px;
+    border: 1px solid #fff;
+    border-radius: 17px;
+    color: #606060;
+    background-color: #fff;
+    font-size: 13px;
+    line-height: 1;
+    text-align: center;
+  }
+
+  .button-menu {
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
+    margin-top: 8px;
+    cursor: pointer;
+
+    @media (min-width: 768px) {
+      width: 70px;
+      margin-left: 49px;
+    }
+
+    width: 60px;
+    margin-left: 20px;
+
+  }
+}
+
+.section-common-keyvisual {
+  position: relative;
+
+  @media (min-width: 768px) {
+    height: 650px;
+  }
+
+  height: 450px;
+
+  .keyvisual-image {
+    width: 100%;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .keyvisual-content {
+    display: flex;
+    position: absolute;
+    z-index: 2;
+    z-index: initial;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+  }
+
+  .keyvisual-title {
+    margin-bottom: 0;
+    font-size: unset;
+    font-weight: 400;
+
+    @media (min-width: 768px) {
+      margin-top: 116px;
+    }
+
+    margin-top: 50px;
+
+    .catch {
+      font-family: "Noto Serif JP";
+    }
+  }
+
+  .title-japan {
+    display: block;
+    font-size: 32px;
+    letter-spacing: .16em;
+    font-family: "Noto Serif JP";
+  }
+
+  .title-english {
+    font-size: 14px;
+    letter-spacing: .075em;
+    font-family: "Bodoni Moda";
+  }
+}
+
+div.breadcrumbs {
+  margin-bottom: initial;
+  padding: 0 20px;
+  div.inner {
+    padding: 8px 0 0;
+    span.name {
+      font-size: 12px;
+      letter-spacing: 3px;
+      line-height: 36px;
+      line-height: 18px;
+      font-family: "Noto Serif JP";
+    }
+  }
+}
+
+.section-common-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 508px;
+  background: url("../img/banner_img.webp") center/cover no-repeat;
+  color: #fff;
+  letter-spacing: .16em;
+  line-height: 1;
+
+  @media (min-width: 768px) {
+    min-height: 508px;
+    padding: 34px 20px 64px;
+    font-size: 47px;
+  }
+
+  min-height: 300px;
+  padding: 30px 20px;
+  font-size: 40px;
+
+  div.banner-text {
+    font-family: "Bodoni Moda";
+  }
+}
+
+footer {
+  position: relative;
+
+  .footer-wrapper {
+    padding: 0 20px;
+
+    @media (min-width: 768px) {
+      max-width: 1282px;
+      margin: 0 auto;
+    }
+  }
+
+  .footer-main {
+    @media (min-width: 768px) {
+      display: flex;
+      justify-content: space-between;
+      padding: 143px 0 102px;
+    }
+
+    padding: 60px 0;
+
+    // @media print, (min-width: $sm-break + .02) and (max-width: 992px) {
+    //   display: block;
+    // }
+  }
+
+  .footer-left {
+    @media (min-width: 768px) {
+      min-width: 500px;
+      margin-right: 50px;
+      padding-top: 162px;
+    }
+
+    margin-bottom: 30px;
+
+    // @media print, (min-width: $sm-break + .02) and (max-width: 992px) {
+    //   margin-bottom: 50px;
+    //   padding-top: 0;
+    // }
+  }
+
+  .footer-right {
+    @media (min-width: 768px) {
+      max-width: 650px;
+      padding-right: 30px;
+    }
+
+    // @media print, (min-width: $sm-break + .02) and (max-width: 992px) {
+    //   max-width: unset;
+    //   padding-right: 0;
+    // }
+  }
+
+  .footer-logo {
+    display: block;
+    width: 229px;
+    font-family: "Yu Gothic Medium", "游ゴシック Medium", yugothic, "游ゴシック体", sans-serif;
+    font-size: 16px;
+    color: #1b6f51;
+
+    @media (min-width: 768px) {
+      margin-bottom: 52px;
+      margin-left: 6px;
+      font-size: 20px;
+    }
+
+    margin-bottom: 40px;
+
+    img {
+      width: 90px;
+      height: 61px;
+      object-fit: cover;
+      object-position: right;
+      &:nth-child(2) {
+        width: 90px;
+        height: 100%;
+        margin-left: 8px;
+      }
+    }
+  }
+
+  .footer-info {
+    letter-spacing: .075em;
+    line-height: calc(24 / 14);
+    color: #656565;
+    font-family: "Noto Serif JP";
+    font-weight: 500;
+
+    @media (min-width: 768px) {
+      margin-bottom: 42px;
+    }
+
+    margin-bottom: 30px;
+  }
+
+  .footer-address {
+    margin-bottom: 0;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .footer-list {
+    margin-bottom: 0;
+
+    @media (min-width: 768px) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      padding-right: 15px;
+    }
+
+    // @media print, (min-width: $sm-break + .02) and (max-width: 992px) {
+    //   justify-content: unset;
+    // }
+  }
+
+  .footer-item {
+    @media (min-width: 768px) {
+      margin-bottom: 24px;
+      margin-left: 48px;
+    }
+
+    margin-bottom: 15px;
+
+    // @media print, (min-width: $sm-break + .02) and (max-width: 992px) {
+    //   margin-right: 40px;
+    //   margin-left: 0;
+    // }
+    &.has_sub {
+      margin-bottom: 24px!important;
+      @media (min-width: 768px) {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 0 24px;
+      }
+      .footer-item-text {
+        margin-top: 8px;
+        width: fit-content;
+        letter-spacing: .32em;
+        line-height: 2;
+    
+        @media (min-width: 768px) {
+          display: flex;
+          flex-direction: row-reverse;
+          margin-top: 56px;
+          padding-top: 22px;
+          border-top: 1px solid #ccc;
+    
+          .is-firefox & {
+            min-width: 56px;
+          }
+    
+          &.is-custom {
+            .is-firefox & {
+              min-width: 112px;
+            }
+          }
+        }
+    
+        .text-inner {
+          @media (min-width: 768px) {
+            writing-mode: vertical-rl;
+          }
+    
+          display: block;
+        }
+      }
+    }
+  }
+
+  .fax-text {
+    text-decoration: none;
+    pointer-events: none;
+  }
+
+  .footer-item-link {
+    @media (min-width: 768px) {
+      display: inline-flex;
+      align-items: flex-start;
+
+      .is-firefox &,
+      .is-tablet & {
+        min-width: 46px;
+      }
+    }
+
+    display: inline-block;
+
+    span {
+      display: block;
+    }
+
+    .text-japan {
+      font-size: 16px;
+      letter-spacing: .32em;
+      font-family: "Noto Serif JP";
+
+      @media (min-width: 768px) {
+        line-height: 1;
+        writing-mode: vertical-rl;
+      }
+    }
+
+    .text-english {
+      font-size: 12px;
+      letter-spacing: .16em;
+      font-family: "Bodoni Moda";
+
+      @media (min-width: 768px) {
+        writing-mode: vertical-lr;
+        margin-right: 9px;
+      }
+    }
+  }
+
+  .footer-detail {
+    @media (min-width: 768px) {
+      display: flex;
+      align-items: center;
+      margin-left: -3px;
+    }
+  }
+
+  .footer-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 44px;
+    padding: 1px 5px;
+    border-radius: 22px;
+    letter-spacing: .075em;
+    text-align: center;
+    font-family: "Noto Serif JP";
+    background-color: #2b6f51;
+    color: #fff;
+
+    @media (min-width: 768px) {
+      margin-right: 46px;
+    }
+
+    // margin-bottom: 20px;
+  }
+
+  .detail-list {
+    display: flex;
+    align-items: center;
+    letter-spacing: .075em;
+  }
+
+  .detail-item {
+    font-weight: 600;
+
+    @media (min-width: 768px) {
+      margin-right: 39px;
+    }
+
+    margin-right: 30px;
+
+    a {
+      position: relative;
+      padding-right: 33px;
+      font-family: "Noto Serif JP";
+      color: #1b6f51;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 18px;
+        height: 10px;
+        margin-top: -5px;
+        background: url("../img/icn_arrow_green.webp") center/contain no-repeat;
+      }
+    }
+  }
+
+  .footer-social {
+    display: flex;
+    align-items: center;
+
+    @media (min-width: 768px) {
+      justify-content: flex-end;
+      margin-top: 44px;
+    }
+
+    // @media print, (min-width: $sm-break + .02) and (max-width: 992px) {
+    //   justify-content: unset;
+    // }
+  }
+
+  .social-item {
+    @media (min-width: 768px) {
+      margin: 0 8px;
+    }
+
+    margin-right: 10px;
+  }
+
+  .social-item-link {
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: center/cover no-repeat;
+
+    &.is-instagram {
+      background-image: url("../img/icn_instagram.webp");
+    }
+
+    &.is-facebook {
+      background-image: url("../img/icn_facebook.webp");
+    }
+
+    &.is-youtube {
+      background-image: url("../img/icn_youtube.webp");
+      width: 29px;
+      height: 23px;
+    }
+  }
+
+  .footer-bottom {
+    background: #1b6f51;
+    color: #fff;
+
+    @media (min-width: 768px) {
+      padding: 14px 0 16px;
+    }
+
+    padding: 20px 0;
+
+    .footer-wrapper {
+      @media (min-width: 768px) {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1382px;
+      }
+    }
+  }
+
+  .bottom-list {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 12px;
+    letter-spacing: .075em;
+  }
+
+  .bottom-item {
+    margin-right: 20px;
+  }
+
+  .footer-copyright {
+    font-size: 11px;
+  }
+}
+
+// メインコンテンツ
+div.performance {
+  background-image: url('../img/performace_heading_bg.webp');
+  background-size: cover;
+  background-position: center;
+  padding: 32px;
+  @media (min-width: 768px) {
+    background-size: none;
+    background-repeat: no-repeat;
+    // height: 900px;
+    padding: 350px 0;
+  }
+  div.inner {
+    @media (min-width: 768px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 107px;
+    }
+    div.catch {
+      font-size: 20px;
+      line-height: 50px;
+      line-height: 38px;
+      letter-spacing: 4px;
+      color: #fff;
+      text-shadow: 0 0 10px #7d7d7d, 0 0 10px #7d7d7d, 0 0 10px #7d7d7d;
+      font-family: "Noto Serif JP";
+      @media (min-width: 768px) {
+        font-size: 24px;
+        line-height: 50px;
+        width: 30%;
+      }
+      br {
+        display: none;
+        @media (min-width: 768px) {
+          display: block;
+        }
+      }
+    }
+    div.message {
+      font-family: "Noto Serif JP";
+      margin-top: 32px;
+      @media (min-width: 768px) {
+        flex: 1;
+      }
+      p {
+        font-size: 15px;
+        line-height: 30px;
+        letter-spacing: 1.125px;
+        color: #fff;
+        text-shadow: 0 0 10px #7d7d7d, 0 0 10px #7d7d7d, 0 0 10px #7d7d7d;
+        &+p {}
+      }
+    }
+  }
+}
+
+div.company {
+  margin-top: 60px;
+  div.pagelinks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    border-bottom: 2px solid #eef2f2;
+    @media (min-width: 768px) {
+      display: flex;
+    }
+    div.item {
+      @media (min-width: 768px) {
+        flex: 1;
+      }
+      a {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 32px;
+        letter-spacing: 0.1px;
+        padding: 8px;
+        @media (min-width: 768px) {
+          display: flex;
+          justify-content: center;
+        }
+        @media (min-width: 768px) and (max-width: 991.98px) {
+          line-height: 24px;
+          text-align: center;
+        }
+        &:hover {
+          text-decoration: underline;
+          text-underline-offset: 16px;
+          text-decoration-thickness: 3px;
+        }
+      }
+    }
+    &.container {
+      @media (min-width: 768px) {
+        width: 1100px;
+      }
+    }
+  }
+  section.greetings {
+    margin-top: 73px;
+    @media (min-width: 768px) {
+      margin-top: 144px;
+    }
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      margin-top: 110px;
+    }
+    div.details {
+      @media (min-width: 768px) {
+        display: flex;
+        align-items: center;
+        gap: 71px;
+      }
+      div.image {
+        @media (min-width: 768px) {
+          // display: flex;
+          width: 38%;
+        }
+        @media (min-width: 768px) and (max-width: 991.98px) {
+          width: 41%;
+        }
+        div.title {
+          @media (min-width: 768px) {
+            margin-bottom: -88px;
+          }
+          hgroup {
+            @media (min-width: 768px) {
+              display: flex;
+            }
+            span.english {
+              line-height: 37px;
+              letter-spacing: 0.16em;
+              font-family: "Bodoni Moda";
+              @media (min-width: 768px) {
+                writing-mode: vertical-rl;
+              }
+            }
+            h2 {
+              font-size: 22px;
+              line-height: 22px;
+              letter-spacing: 0.32em;
+              @media (min-width: 768px) {
+                font-size: 24px;
+                line-height: 32px;
+                writing-mode: vertical-rl;
+              }
+            }
+          }
+        }
+        div.face {
+          margin-top: 24px;
+          @media (min-width: 768px) {
+            margin-top: initial;
+          }
+          img {
+            width: 100%;
+          }
+        }
+      }
+      div.text {
+        margin-top: 42px;
+        @media (min-width: 768px) {
+          flex: 1;
+          max-width: 580px;
+        }
+        @media (min-width: 768px) and (max-width: 991.98px) {
+          margin-top: 24px;
+        }
+        div.catch {
+          font-size: 22px;
+          font-weight: 500;
+          line-height: 35px;
+          letter-spacing: 0.2em;
+          @media (min-width: 768px) {
+            font-size: 24px;
+            line-height: 40px;
+          }
+          @media (min-width: 768px) and (max-width: 991.98px) {
+            font-size: 21px;
+            line-height: 35px;
+          }
+          br {
+            display: none;
+            @media (min-width: 768px) {
+              display: block;
+            }
+            @media (min-width: 768px) and (max-width: 991.98px) {
+              display: none;
+            }
+          }
+        }
+        div.message {
+          font-size: 14px;
+          line-height: 26px;
+          letter-spacing: 0.075em;
+          margin-top: 24px;
+          @media (min-width: 768px) {
+            margin-top: 48px;
+          }
+          @media (min-width: 768px) and (max-width: 991.98px) {
+            margin-top: 32px;
+          }
+          br {
+            @media (min-width: 768px) and (max-width: 991.98px) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+    &.container {
+      @media (min-width: 768px) {
+        width: 1185px;
+      }
+    }
+  }
+  section.staff {
+    background-color: #eef2f2;
+    margin-top: 42px;
+    padding-top: 42px;
+    @media (min-width: 768px) {
+      margin-top: -24px;
+      padding-top: 132px;
+      padding: 132px 80px 0;
+    }
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      padding-top: 66px;
+      padding: 66px 40px 0;
+    }
+    div.details {
+      @media (min-width: 768px) {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        gap: 98px;
+      }
+      @media (min-width: 768px) and (max-width: 991.98px) {
+        gap: 49px;
+      }
+      div.title {
+        hgroup {
+          @media (min-width: 768px) {
+            display: flex;
+          }
+          span.english {
+            line-height: 37px;
+            letter-spacing: 0.16em;
+            font-family: "Bodoni Moda";
+            @media (min-width: 768px) {
+              writing-mode: vertical-rl;
+            }
+          }
+          h2 {
+            font-size: 22px;
+            line-height: 22px;
+            letter-spacing: 0.32em;
+            @media (min-width: 768px) {
+              font-size: 24px;
+              line-height: 32px;
+              writing-mode: vertical-rl;
+            }
+          }
+        }
+      }
+      div.lists {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px 16px;
+        margin-top: 42px;
+        @media (min-width: 768px) {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 67px 62px;
+          margin-top: initial;
+        }
+        @media (min-width: 768px) and (max-width: 991.98px) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        @media (min-width: 992px) and (max-width: 1024px) {
+          gap: 32px 24px;
+        }
+        div.item {
+          div.face {
+            img {}
+          }
+          div.profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 16px;
+            span.position {
+              font-size: 14px;
+              line-height: 32px;
+              line-height: 22px;
+              letter-spacing: 0.075em;
+              color: #1b6f51;
+            }
+            span.name {
+              font-size: 18px;
+              line-height: 32px;
+              line-height: 22px;
+              letter-spacing: 0.3em;
+              @media (min-width: 768px) {
+                font-size: 20px;
+                line-height: 32px;
+              }
+            }
+          }
+        }
+      }
+    }
+    div.links {
+      margin-top: 42px;
+      padding-bottom: 42px;
+      @media (min-width: 768px) {
+        margin-top: 123px;
+        padding-bottom: 90px;
+      }
+      a {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0.075em;
+        color: #1b6f51;
+        border: 1px solid #1b6f51;
+        border-radius: 100px;
+        width: 90%;
+        display: block;
+        text-align: center;
+        position: relative;
+        margin: 0 auto;
+        padding: 12px 0;
+        @media (min-width: 768px) {
+          width: 25%;
+          padding: 16px 0;
+        }
+        @media (min-width: 768px) and (max-width: 991.98px) {
+          width: 50%;
+        }
+        img {
+          position: absolute;
+          content: "";
+          right: 16px;
+          bottom: 50%;
+          transform: translateY(50%);
+        }
+      }
+    }
+    &.container {
+      @media (min-width: 768px) {
+        width: 1380px;
+      }
+    }
+  }
+  section.overview {
+    margin-top: 42px;
+    @media (min-width: 768px) {
+      margin-top: 152px;
+    }
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      margin-top: 98px;
+    }
+    div.details {
+      @media (min-width: 768px) {
+        display: flex;
+        justify-content: space-between;
+        gap: 242px;
+      }
+      @media (min-width: 768px) and (max-width: 991.98px) {
+        gap: 64px;
+      }
+      @media (min-width: 992px) and (max-width: 1024px) {
+        gap: 100px;
+      }
+      div.title {
+        hgroup {
+          @media (min-width: 768px) {
+            display: flex;
+          }
+          span.english {
+            line-height: 75px;
+            line-height: 37px;
+            letter-spacing: 0.16em;
+            font-family: "Bodoni Moda";
+            @media (min-width: 768px) {
+              writing-mode: vertical-rl;
+            }
+          }
+          h2 {
+            font-size: 22px;
+            line-height: 28px;
+            letter-spacing: 0.32em;
+            @media (min-width: 768px) {
+              font-size: 24px;
+              line-height: 32px;
+              writing-mode: vertical-rl;
+            }
+          }
+        }
+      }
+      table.profile {
+        margin-top: 42px;
+        @media (min-width: 768px) {
+          margin-top: 64px;
+        }
+        tbody {
+          tr {
+            display: flex;
+            flex-direction: column;
+            @media (min-width: 768px) {
+              display: block;
+            }
+            th {
+              font-weight: 500;
+              line-height: 20px;
+              letter-spacing: 0.075em;
+              color: #606060;
+              @media (min-width: 768px) {
+                font-size: 15px;
+                width: 200px;
+              }
+              @media (min-width: 768px) and (max-width: 991.98px) {
+                width: 150px;
+              }
+              @media (min-width: 992px) and (max-width: 1024px) {
+                width: 180px;
+              }
+            }
+            td {
+              font-weight: 500;
+              line-height: 20px;
+              letter-spacing: 0.075em;
+              color: #606060;
+              margin-top: 8px;
+              @media (min-width: 768px) {
+                font-size: 15px;
+              }
+              br {}
+            }
+            &+tr {
+              margin-top: 16px;
+              padding-top: 16px;
+              border-top: 1px solid #ccc;
+              @media (min-width: 768px) {
+                margin-top: initial;
+                padding: 16px;
+              }
+            }
+            &:first-child {
+              @media (min-width: 768px) {
+                padding: 0 16px 16px;
+              }
+            }
+          }
+        }
+      }
+    }
+    &.container {
+      @media (min-width: 768px) {
+        width: 1185px;
+      }
+    }
+  }
+  section.history {
+    background-color: #eef2f2;
+    margin-top: 42px;
+    padding-top: 42px;
+    padding-bottom: 42px;
+    @media (min-width: 768px) {
+      margin-top: 154px;
+      padding-top: 131px;
+      padding-bottom: 128px;
+    }
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      margin-top: 103px;
+      padding-top: 88px;
+    }
+    div.container {
+      @media (min-width: 768px) {
+        width: 1126px;
+      }
+      div.details {
+        @media (min-width: 768px) {
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: space-between;
+          gap: 102px;
+        }
+        @media (min-width: 768px) and (max-width: 991.98px) {
+          gap: 56px;
+        }
+        div.title {
+          hgroup {
+            @media (min-width: 768px) {
+              display: flex;
+            }
+            span.english {
+              line-height: 75px;
+              line-height: 37px;
+              letter-spacing: 0.16em;
+              font-family: "Bodoni Moda";
+              @media (min-width: 768px) {
+                writing-mode: vertical-rl;
+              }
+            }
+            h2 {
+              font-size: 22px;
+              line-height: 22px;
+              letter-spacing: 0.32em;
+              @media (min-width: 768px) {
+                font-size: 24px;
+                line-height: 32px;
+                writing-mode: vertical-rl;
+              }
+            }
+          }
+        }
+        div.timeline {
+          position: relative;
+          margin-top: 42px;
+          @media (min-width: 768px) {
+            flex: 1;
+          }
+          div.item {
+            position: relative;
+            @media (min-width: 768px) {
+              display: flex;
+              align-items: baseline;
+              align-items: center;
+            }
+            div.label {
+              @media (min-width: 768px) {
+                width: 10px;
+                height: 10px;
+                background-color: #4b4b4b;
+                border-radius: 50%;
+                order: 1;
+                position: relative;
+                margin-right: 18px;
+                @media (min-width: 768px) {
+                  margin-right: 29px;
+                }
+              }
+              &::before {
+                @media (min-width: 768px) {
+                  position: absolute;
+                  content: "";
+                  width: 30px;
+                  height: 1px;
+                  background-color: #4b4b4b;
+                  left: -30px;
+                  bottom: 50%;
+                  transform: translateY(50%);
+                  @media (min-width: 768px) {
+                    width: 90px;
+                    left: -90px
+                  }
+                }
+              }
+            }
+            div.year {
+              font-size: 16px;
+              line-height: 32px;
+              letter-spacing: 0.03em;
+              // width: 25%;
+              order: 0;
+              margin-right: 30px;
+              @media (min-width: 768px) {
+                width: 15%;
+                margin-right: 87px;
+              }
+              @media (min-width: 768px) and (max-width: 991.98px) {
+                width: 22%;
+              }
+              @media (min-width: 992px) and (max-width: 1024px) {
+                width: 22%;
+              }
+              span.number {
+                font-size: 25px;
+                line-height: 28px;
+                letter-spacing: 0.15em;
+                font-family: "Bodoni Moda";
+                @media (min-width: 768px) {
+                  font-size: 40px;
+                }
+                @media (min-width: 768px) and (max-width: 991.98px) {
+                  font-size: 34px;
+                }
+              }
+            }
+            div.text {
+              flex: 1;
+              order: 3;
+              @media (min-width: 768px) {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              }
+              @media (min-width: 768px) and (max-width: 991.98px) {
+                gap: 8px;
+              }
+              div.comment {
+                @media (min-width: 768px) {
+                  width: 90%;
+                }
+                br {
+                  display: none;
+                  @media (min-width: 768px) {
+                    display: block;
+                  }
+                  @media (min-width: 768px) and (max-width: 991.98px) {
+                    display: none;
+                  }
+                }
+              }
+              div.image {
+                margin-top: 8px;
+                img {}
+              }
+            }
+            &+.item {
+              margin-top: 32px;
+            }
+          }
+          &::after {
+            @media (min-width: 768px) {
+              position: absolute;
+              content: "";
+              width: 1px;
+              height: 89%;
+              background-color: #4b4b4b;
+              left: 34.9%;
+              top: 16px;
+              transform: translateX(50%);
+              @media (min-width: 768px) {
+                height: 94.5%;
+                left: 24.8%;
+                top: 48px;
+              }
+              @media (min-width: 768px) and (max-width: 991.98px) {
+                left: 38%;
+              }
+              @media (min-width: 992px) and (max-width: 1024px) {
+                left: 33.8%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  section.business {
+    margin-top: 42px;
+    @media (min-width: 768px) {
+      margin-top: 134px;
+    }
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      margin-top: 88px;
+    }
+    div.heading {
+      @media (min-width: 768px) {
+        display: flex;
+        align-items: center;
+        gap: 113px;
+        margin-left: 80px;
+      }
+      @media (min-width: 768px) and (max-width: 991.98px) {
+        margin-left: initial;
+      }
+      div.title {
+        hgroup {
+          @media (min-width: 768px) {
+            display: flex;
+          }
+          span.english {
+            line-height: 75px;
+            line-height: 37px;
+            letter-spacing: 0.16em;
+            font-family: "Bodoni Moda";
+            @media (min-width: 768px) {
+              writing-mode: vertical-rl;
+            }
+          }
+          h2 {
+            font-size: 22px;
+            line-height: 22px;
+            letter-spacing: 0.32em;
+            @media (min-width: 768px) {
+              font-size: 24px;
+              line-height: 32px;
+              writing-mode: vertical-rl;
+            }
+          }
+        }
+      }
+      div.message {
+        font-size: 14px;
+        line-height: 26px;
+        letter-spacing: 0.075em;
+        margin-top: 21px;
+        @media (min-width: 768px) {
+          margin-top: initial;
+        }
+        br {
+          display: none;
+          @media (min-width: 768px) {
+            display: block;
+          }
+        }
+      }
+    }
+    div.data {
+      margin-top: 42px;
+      @media (min-width: 768px) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 67px 33px;
+        margin-top: 56px;
+      }
+      @media (min-width: 768px) and (max-width: 991.98px) {
+        gap: 40px 20px;
+      }
+      @media (min-width: 992px) and (max-width: 1024px) {
+        gap: 40px 20px;
+      }
+      div.item {
+        @media (min-width: 768px) {
+          display: grid;
+          grid-template-rows: subgrid;
+          grid-row: span 2;
+          gap: 12px;
+          // padding: 32px
+        }
+        div.image {
+          img {
+            width: 100%;
+          }
+        }
+        div.text {
+          margin-top: 14px;
+          h3 {
+            font-size: 18px;
+            letter-spacing: 0.075em;
+            text-align: center;
+            @media (min-width: 768px) {
+              font-size: 20px;
+            }
+            @media (min-width: 768px) and (max-width: 991.98px) {
+              font-size: 19px;
+            }
+            small {
+              font-size: 14px;
+              line-height: 28px;
+              letter-spacing: 0.075em;
+              display: block;
+            }
+          }
+          div.description {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 28px;
+            letter-spacing: 0.075em;
+            color: #656565;
+            margin-top: 10px;
+            @media (min-width: 768px) {
+              height: 130px;
+              margin-top: 20px;
+            }
+            @media (min-width: 768px) and (max-width: 991.98px) {
+              height: 180px;
+            }
+            @media (min-width: 992px) and (max-width: 1024px) {
+              height: 180px;
+            }
+            br {
+              display: none;
+              @media (min-width: 768px) {}
+            }
+          }
+          div.link {
+            margin-top: 14px;
+            a {
+              font-size: 14px;
+              line-height: 28px;
+              letter-spacing: 0.075em;
+              color: #1b6f51;
+              border: 1px solid #1b6f51;
+              border-radius: 100px;
+              display: block;
+              text-align: center;
+              width: 90%;
+              position: relative;
+              margin: 0 auto;
+              padding: 10px;
+              @media (min-width: 768px) {
+                padding: 16px;
+              }
+              @media (min-width: 768px) and (max-width: 991.98px) {
+                line-height: 20px;
+              }
+              @media (min-width: 992px) and (max-width: 1024px) {
+                line-height: 20px;
+              }
+              img {
+                position: absolute;
+                content: "";
+                right: 16px;
+                bottom: 50%;
+                transform: translateY(50%);
+              }
+            }
+          }
+        }
+        &+.item {
+          margin-top: 34px;
+          @media (min-width: 768px) {
+            margin-top: initial;
+          }
+        }
+        &:last-child {
+          div.text {
+            div.description {
+              @media (min-width: 768px) {
+                height: 105px;
+              }
+              @media (min-width: 768px) and (max-width: 991.98px) {
+                height: 130px;
+              }
+              @media (min-width: 992px) and (max-width: 1024px) {
+                height: 130px;
+              }
+            }
+          }
+        }
+      }
+    }
+    &.container {}
+  }
+  section.guidelines {
+    background-color: #eef2f2;
+    margin-top: 42px;
+    padding-top: 42px;
+    padding-bottom: 42px;
+    @media (min-width: 768px) {
+      margin-top: 158px;
+      padding-top: 126px;
+      padding-bottom: 105px;
+    }
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      margin-top: 104px;
+      padding-top: 88px;
+    }
+    div.container {
+      div.details {
+        @media (min-width: 768px) {
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: space-around;
+          gap: 69px;
+        }
+        @media (min-width: 768px) and (max-width: 991.98px) {
+          gap: 40px;
+        }
+        div.title {
+          hgroup {
+            @media (min-width: 768px) {
+              display: flex;
+            }
+            span.english {
+              line-height: 75px;
+              line-height: 37px;
+              letter-spacing: 0.16em;
+              font-family: "Bodoni Moda";
+              @media (min-width: 768px) {
+                writing-mode: vertical-rl;
+              }
+            }
+            h2 {
+              font-size: 22px;
+              line-height: 22px;
+              letter-spacing: 0.32em;
+              @media (min-width: 768px) {
+                font-size: 24px;
+                line-height: 32px;
+                writing-mode: vertical-rl;
+              }
+            }
+          }
+        }
+        div.lists {
+          margin-top: 42px;
+          @media (min-width: 768px) {
+            flex: 1;
+            display: flex;
+            gap: 34px;
+            margin-top: 84px;
+          }
+          @media (min-width: 768px) and (max-width: 991.98px) {
+            align-items: flex-start;
+          }
+          @media (min-width: 992px) and (max-width: 1024px) {
+            align-items: flex-start;
+          }
+          div.item {
+            background-color: #fff;
+            @media (min-width: 768px) {
+              flex: 1;
+            }
+            h3 {
+              font-size: 16px;
+              line-height: 32px;
+              letter-spacing: 0.32em;
+              padding: 12px 19px 0 12px;
+              @media (min-width: 768px) {
+                font-size: 18px;
+                padding: 38px 24px 0;
+              }
+            }
+            div.vision {
+              line-height: 38px;
+              padding: 20px 32px 0;
+              @media (min-width: 768px) {
+                line-height: 38px;
+                padding: 24px 0 0 48px;
+              }
+              @media (min-width: 768px) and (max-width: 991.98px) {
+                padding: 24px 16px 0;
+              }
+              br {
+                display: none;
+                @media (min-width: 768px) {
+                  display: block;
+                }
+              }
+            }
+            div.image {
+              margin-top: 24px;
+              img {
+                width: 100%;
+              }
+            }
+            ol.model {
+              padding: 20px 20px;
+              @media (min-width: 768px) {
+                padding: 24px 0 0 32px;
+              }
+              @media (min-width: 768px) and (max-width: 991.98px) {
+                padding: 24px 16px 0;
+              }
+              li {
+                letter-spacing: 1.4px;
+                line-height: 40px;
+                color: #656565;
+                @media (min-width: 768px) {
+                  line-height: 48px;
+                }
+                @media (min-width: 768px) and (max-width: 991.98px) {
+                  line-height: 30px;
+                }
+                &+li {
+                  @media (min-width: 768px) and (max-width: 991.98px) {
+                    margin-top: 16px;
+                  }
+                }
+              }
+            }
+            &:first-child {
+              div.vision {
+                br {}
+              }
+              div.image {
+                img {}
+              }
+            }
+            &:last-child {
+              ol.model {
+                li {}
+              }
+            }
+            &+.item {
+              margin-top: 27px;
+              @media (min-width: 768px) {
+                margin-top: initial;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  section.sdgs {
+    background-image: url('img/company_about_bg.webp');
+    background-position: center;
+    background-size: cover;
+    margin-top: 42px;
+    padding-top: 42px;
+    padding-bottom: 42px;
+    @media (min-width: 768px) {
+      margin-top: 97px;
+      padding: 164px 0 150px;
+    }
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      margin-top: 65px;
+      padding: 100px 0;
+    }
+    div.container {
+      @media (min-width: 768px) {
+        width: 1000px;
+      }
+      div.details {
+        @media (min-width: 768px) {
+          display: flex;
+          justify-content: center;
+          gap: 139px;
+        }
+        @media (min-width: 768px) and (max-width: 991.98px) {
+          gap: 64px;
+        }
+        @media (min-width: 992px) and (max-width: 1024px) {
+          gap: 64px;
+        }
+        div.title {
+          hgroup {
+            @media (min-width: 768px) {
+              display: flex;
+            }
+            span.english {
+              line-height: 75px;
+              line-height: 37px;
+              letter-spacing: 0.16em;
+              font-family: "Bodoni Moda";
+              color: #fff;
+              @media (min-width: 768px) {
+                writing-mode: vertical-rl;
+              }
+            }
+            h2 {
+              font-size: 22px;
+              line-height: 22px;
+              letter-spacing: 0.32em;
+              color: #fff;
+              @media (min-width: 768px) {
+                font-size: 24px;
+                line-height: 32px;
+                writing-mode: vertical-rl;
+              }
+            }
+          }
+        }
+        div.text {
+          margin-top: 42px;
+          @media (min-width: 768px) {
+            max-width: 665px;
+          }
+          div.decralation {
+            line-height: 28px;
+            letter-spacing: 0.075em;
+            color: #fff;
+            background-color: #1b6f51;
+            display: inline-block;
+            padding: 0 8px;
+          }
+          div.message {
+            font-size: 13px;
+            color: #fff;
+            margin-top: 20px;
+            @media (min-width: 768px) {
+              margin-top: 45px;
+            }
+            @media (min-width: 768px) and (max-width: 991.98px) {
+              margin-top: 30px;
+            }
+          }
+          div.logo {
+            margin-top: 14px;
+            @media (min-width: 768px) {
+              margin-top: 23px;
+            }
+            img {}
+          }
+        }
+      }
+    }
+  }
+  section.local {
+    margin-top: 42px;
+    @media (min-width: 768px) {
+      margin-top: 148px;
+    }
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      margin-top: 100px;
+    }
+    div.details {
+      @media (min-width: 768px) {
+        display: flex;
+        gap: 139px;
+      }
+      @media (min-width: 992px) and (max-width: 1024px) {
+        gap: 100px;
+      }
+      div.title {
+        hgroup {
+          @media (min-width: 768px) {
+            display: flex;
+          }
+          span.english {
+            line-height: 75px;
+            line-height: 37px;
+            letter-spacing: 0.16em;
+            font-family: "Bodoni Moda";
+            @media (min-width: 768px) {
+              writing-mode: vertical-rl;
+            }
+          }
+          h2 {
+            font-size: 22px;
+            line-height: 22px;
+            letter-spacing: 0.32em;
+            @media (min-width: 768px) {
+              font-size: 24px;
+              line-height: 32px;
+              writing-mode: vertical-rl;
+            }
+          }
+        }
+      }
+      div.lists {
+        margin-top: 42px;
+        @media (min-width: 768px) {
+          margin-top: 84px;
+        }
+        div.item {
+          @media (min-width: 768px) {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+          }
+          @media (min-width: 768px) and (max-width: 991.98px) {
+            display: block;
+            width: 90%;
+          }
+          div.image {
+            @media (min-width: 768px) {
+              flex: 1;
+            }
+            img {
+              width: 100%;
+            }
+          }
+          dl.text {
+            margin-top: 16px;
+            @media (min-width: 768px) {
+              width: 63%;
+              margin-top: initial;
+            }
+            @media (min-width: 768px) and (max-width: 991.98px) {
+              width: initial;
+              margin-top: 24px;
+            }
+            dt {
+              font-size: 18px;
+              font-weight: 500;
+              letter-spacing: 0.075em;
+            }
+            dd {
+              font-size: 13px;
+              line-height: 24px;
+              letter-spacing: 0.075em;
+              margin-top: 4px;
+              @media (min-width: 768px) {
+                margin-top: 16px;
+              }
+              br {}
+            }
+          }
+          &+.item {
+            margin-top: 33px;
+            @media (min-width: 768px) {
+              margin-top: 48px;
+            }
+          }
+        }
+      }
+    }
+    &.container {}
+  }
+}
+
+section.spec {
+  margin-top: 65px;
+  @media (min-width: 768px) {
+    margin-top: 205px;
+  }
+  div.items {
+    div.container {
+      @media (min-width: 768px) {
+        width: 1170px;
+      }
+      div.blocks {
+        @media (min-width: 768px) {
+          display: flex;
+          justify-content: center;
+          gap: 67px;
+        }
+        div.image {
+          @media (min-width: 768px) {
+            width: 50%;
+          }
+          img {
+            width: 100%;
+          }
+        }
+        div.text {
+          @media (min-width: 768px) {
+            flex: 1;
+          }
+          div.heading {
+            span.en {
+              font-size: 14px;
+              line-height: 24px;
+              letter-spacing: 1.05px;
+              color: #1b6f51;
+              font-family: "Bodoni Moda";
+              margin-left: 4px;
+            }
+            div.number {
+              font-size: 40px;
+              line-height: 40px;
+              letter-spacing: 1.05px;
+              color: #1b6f51;
+              font-family: "Bodoni Moda";
+              font-weight: 500;
+              margin-top: 4px;
+              @media (min-width: 768px) {
+                font-size: 80px;
+                line-height: 75px;
+              }
+            }
+          }
+          dl.description {
+            margin-top: 40px;
+            @media (min-width: 768px) {
+              margin-top: 78px;
+            }
+            dt {
+              h2 {
+                font-size: 20px;
+                line-height: 40px;
+                letter-spacing: 4px;
+                font-family: "Noto Serif JP";
+                @media (min-width: 768px) {
+                  font-size: 24px;
+                }
+              }
+            }
+            dd {
+              margin-top: 20px;
+              @media (min-width: 768px) {
+                margin-top: 48px;
+              }
+              p {
+                font-size: 14px;
+                line-height: 26px;
+                letter-spacing: 1.05px;
+                font-family: "Noto Serif JP";
+                color: #656565;
+                &+p {
+                  @media (min-width: 768px) {
+                    margin-top: 2em;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    &+.items {
+      margin-top: 48px;
+      @media (min-width: 768px) {
+        margin-top: 223px;
+      }
+    }
+    &:nth-child(odd) {
+      @media (min-width: 768px) {
+        position: relative
+      }
+      &::before {
+        @media (min-width: 768px) {
+          position: absolute;
+          content: '';
+          background-image: url('../img/performace_spec_bg.webp');
+          background-size: cover;
+          width: 1170px;
+          height: 438px;
+          left: 0;
+          bottom: 36%;
+          transform: translateY(50%);
+          z-index: -1;
+        }
+      }
+      div.container {
+        div.blocks {
+          div.text {
+            div.heading {
+              @media (min-width: 768px) {
+                margin-left: 16px;
+              }
+            }
+          }
+        }
+      }
+    }
+    &:nth-child(even) {
+      @media (min-width: 768px) {
+        position: relative
+      }
+      &::before {
+        position: absolute;
+        content: '';
+        background-image: url('../img/performace_spec_bg.webp');
+        background-size: cover;
+        width: 1170px;
+        height: 438px;
+        right: 0;
+        bottom: 36%;
+        transform: translateY(50%);
+        z-index: -1;
+      }
+      div.container {
+        div.blocks {
+          @media (min-width: 768px) {
+            flex-direction: row-reverse;
+          }
+          div.text {
+            div.heading {
+              @media (min-width: 768px) {
+                display: table;
+                margin-left: auto;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+div.section-common-banner {
+  margin-top: 75px;
+  @media (min-width: 768px) {
+    margin-top: 207px;
+  }
+}

@@ -1,0 +1,2295 @@
+@charset "UTF-8";
+/* bodyのデフォルトを定義 */
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.8;
+  font-family: "Noto Serif JP", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", Meiryo, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  font-feature-settings: "palt";
+}
+@media (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+/* marginとpaddingを削除 */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd,
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+/* pが連続したら段落を空ける */
+p + p {
+  margin-top: 1em;
+}
+
+/* list-styleを削除 */
+ul,
+ol {
+  list-style: none;
+}
+
+/* imgとpictureタグの設定 */
+img,
+picture {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+/* 各ブラウザやOSの設定で動きの制限をしている場合、すべてのアニメーションとトランジションを削除 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* aタグのテキストカラーを親要素から継承と、ホバー時のアニメーション */
+a {
+  color: inherit;
+}
+@media screen and (min-width: 768px) {
+  a {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+}
+a:hover, a:focus {
+  text-decoration: none;
+  color: inherit;
+}
+@media screen and (min-width: 768px) {
+  a:hover, a:focus {
+    opacity: 0.7;
+    text-decoration: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  a:hover img {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+@font-face {
+  font-family: "Noto Serif JP";
+  font-style: normal;
+  font-weight: 200;
+  src: url("../fonts/NotoSerifJP-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: "Noto Serif JP";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/NotoSerifJP-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: "Noto Serif JP";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/NotoSerifJP-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: "Noto Serif JP";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/NotoSerifJP-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: "Bodoni Moda";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/BodoniModa-VariableFont_opsz,wght.ttf");
+}
+@font-face {
+  font-family: "Bodoni Moda";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/BodoniModa-VariableFont_opsz,wght.ttf");
+}
+@font-face {
+  font-family: "Bodoni Moda";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/BodoniModa-VariableFont_opsz,wght.ttf");
+}
+header {
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+}
+header.header-sub {
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+header.header-sub .navigation-link {
+  color: #fff;
+  mix-blend-mode: difference;
+}
+header.header-sub .navigation-link::before {
+  background-image: url("../img/icn_arrow_white.webp");
+}
+header.header-sub .header-button {
+  border-color: transparent;
+  background: #fff;
+}
+header.header-sub .header-link {
+  border-bottom-color: #fff;
+  color: #fff;
+}
+header.header-sub .header-link::before {
+  background-image: url("../img/icn_external_white.webp");
+}
+header.scrolled {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+header.scrolled .header-logo {
+  display: none;
+}
+@media (min-width: 768px) {
+  header.scrolled .header-logo {
+    display: none;
+  }
+}
+header.scrolled .header-right {
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  header.scrolled .header-right .header-link {
+    display: none;
+  }
+}
+header .header-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+@media (min-width: 768px) {
+  header .header-wrapper {
+    padding: 31px 50px 22px 95px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  header .header-wrapper {
+    padding: 31px 30px 22px 30px;
+  }
+}
+header .header-logo {
+  display: block;
+  font-family: "Yu Gothic Medium", "游ゴシック Medium", yugothic, "游ゴシック体", sans-serif;
+  font-size: 16px;
+  color: #1b6f51;
+  width: 100px;
+}
+@media (min-width: 768px) {
+  header .header-logo {
+    width: 121px;
+    margin-top: 65px;
+    font-size: 24px;
+  }
+}
+header .header-logo h1 {
+  font-size: 16px;
+}
+@media (min-width: 768px) {
+  header .header-logo h1 {
+    font-size: 24px;
+  }
+}
+header ul,
+header ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+header .header-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 13px;
+  letter-spacing: 0.075em;
+}
+header .header-navigation li {
+  margin-left: 33px;
+  display: none;
+}
+@media (min-width: 768px) {
+  header .header-navigation li {
+    display: block;
+  }
+}
+header .header-navigation li.sns {
+  display: block;
+  margin-left: 8px;
+}
+@media (min-width: 768px) {
+  header .header-navigation li.sns {
+    margin-left: 20px;
+  }
+}
+header .navigation-link {
+  position: relative;
+  padding-right: 26px;
+  color: #fff;
+}
+header .navigation-link::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 18px;
+  height: 10px;
+  margin-top: -5px;
+  background: url("../img/icn_arrow_white.webp") center/contain no-repeat;
+}
+.is-tablet header .navigation-link::before {
+  margin-top: -4px;
+}
+header .header-top {
+  display: flex;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  header .header-top {
+    margin-bottom: 20px;
+  }
+}
+header .header-link {
+  display: table;
+  position: relative;
+  margin-left: auto;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: 0.075em;
+}
+header .header-link::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  background: url("../img/icn_external.webp") center/contain no-repeat;
+}
+header .header-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 125px;
+  height: 34px;
+  margin-left: 26px;
+  padding: 0 5px;
+  border: 1px solid #fff;
+  border-radius: 17px;
+  color: #606060;
+  background-color: #fff;
+  font-size: 13px;
+  line-height: 1;
+  text-align: center;
+}
+header .button-menu {
+  color: #fff;
+  font-size: 10px;
+  text-align: center;
+  margin-top: 8px;
+  cursor: pointer;
+  width: 60px;
+  margin-left: 20px;
+}
+@media (min-width: 768px) {
+  header .button-menu {
+    width: 70px;
+    margin-left: 49px;
+  }
+}
+
+.section-common-keyvisual {
+  position: relative;
+  height: 450px;
+}
+@media (min-width: 768px) {
+  .section-common-keyvisual {
+    height: 650px;
+  }
+}
+.section-common-keyvisual .keyvisual-image {
+  width: 100%;
+  height: 100%;
+}
+.section-common-keyvisual .keyvisual-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.section-common-keyvisual .keyvisual-content {
+  display: flex;
+  position: absolute;
+  z-index: 2;
+  z-index: initial;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+}
+.section-common-keyvisual .keyvisual-title {
+  margin-bottom: 0;
+  font-size: unset;
+  font-weight: 400;
+  margin-top: 50px;
+}
+@media (min-width: 768px) {
+  .section-common-keyvisual .keyvisual-title {
+    margin-top: 116px;
+  }
+}
+.section-common-keyvisual .keyvisual-title .catch {
+  font-family: "Noto Serif JP";
+}
+.section-common-keyvisual .title-japan {
+  display: block;
+  font-size: 32px;
+  letter-spacing: 0.16em;
+  font-family: "Noto Serif JP";
+}
+.section-common-keyvisual .title-english {
+  font-size: 14px;
+  letter-spacing: 0.075em;
+  font-family: "Bodoni Moda";
+}
+
+div.breadcrumbs {
+  margin-bottom: initial;
+  padding: 0 20px;
+}
+div.breadcrumbs div.inner {
+  padding: 8px 0 0;
+}
+div.breadcrumbs div.inner span.name {
+  font-size: 12px;
+  letter-spacing: 3px;
+  line-height: 36px;
+  line-height: 18px;
+  font-family: "Noto Serif JP";
+}
+
+.section-common-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 508px;
+  background: url("../img/banner_img.webp") center/cover no-repeat;
+  color: #fff;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  min-height: 300px;
+  padding: 30px 20px;
+  font-size: 40px;
+}
+@media (min-width: 768px) {
+  .section-common-banner {
+    min-height: 508px;
+    padding: 34px 20px 64px;
+    font-size: 47px;
+  }
+}
+.section-common-banner div.banner-text {
+  font-family: "Bodoni Moda";
+}
+
+footer {
+  position: relative;
+}
+footer .footer-wrapper {
+  padding: 0 20px;
+}
+@media (min-width: 768px) {
+  footer .footer-wrapper {
+    max-width: 1282px;
+    margin: 0 auto;
+  }
+}
+footer .footer-main {
+  padding: 60px 0;
+}
+@media (min-width: 768px) {
+  footer .footer-main {
+    display: flex;
+    justify-content: space-between;
+    padding: 143px 0 102px;
+  }
+}
+footer .footer-left {
+  margin-bottom: 30px;
+}
+@media (min-width: 768px) {
+  footer .footer-left {
+    min-width: 500px;
+    margin-right: 50px;
+    padding-top: 162px;
+  }
+}
+@media (min-width: 768px) {
+  footer .footer-right {
+    max-width: 650px;
+    padding-right: 30px;
+  }
+}
+footer .footer-logo {
+  display: block;
+  width: 229px;
+  font-family: "Yu Gothic Medium", "游ゴシック Medium", yugothic, "游ゴシック体", sans-serif;
+  font-size: 16px;
+  color: #1b6f51;
+  margin-bottom: 40px;
+}
+@media (min-width: 768px) {
+  footer .footer-logo {
+    margin-bottom: 52px;
+    margin-left: 6px;
+    font-size: 20px;
+  }
+}
+footer .footer-logo img {
+  width: 90px;
+  height: 61px;
+  object-fit: cover;
+  object-position: right;
+}
+footer .footer-logo img:nth-child(2) {
+  width: 90px;
+  height: 100%;
+  margin-left: 8px;
+}
+footer .footer-info {
+  letter-spacing: 0.075em;
+  line-height: 1.7142857143;
+  color: #656565;
+  font-family: "Noto Serif JP";
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+@media (min-width: 768px) {
+  footer .footer-info {
+    margin-bottom: 42px;
+  }
+}
+footer .footer-address {
+  margin-bottom: 0;
+}
+footer ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+footer .footer-list {
+  margin-bottom: 0;
+}
+@media (min-width: 768px) {
+  footer .footer-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding-right: 15px;
+  }
+}
+footer .footer-item {
+  margin-bottom: 15px;
+}
+@media (min-width: 768px) {
+  footer .footer-item {
+    margin-bottom: 24px;
+    margin-left: 48px;
+  }
+}
+footer .footer-item.has_sub {
+  margin-bottom: 24px !important;
+}
+@media (min-width: 768px) {
+  footer .footer-item.has_sub {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 0 24px;
+  }
+}
+footer .footer-item.has_sub .footer-item-text {
+  margin-top: 8px;
+  width: fit-content;
+  letter-spacing: 0.32em;
+  line-height: 2;
+}
+@media (min-width: 768px) {
+  footer .footer-item.has_sub .footer-item-text {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 56px;
+    padding-top: 22px;
+    border-top: 1px solid #ccc;
+  }
+  .is-firefox footer .footer-item.has_sub .footer-item-text {
+    min-width: 56px;
+  }
+  .is-firefox footer .footer-item.has_sub .footer-item-text.is-custom {
+    min-width: 112px;
+  }
+}
+footer .footer-item.has_sub .footer-item-text .text-inner {
+  display: block;
+}
+@media (min-width: 768px) {
+  footer .footer-item.has_sub .footer-item-text .text-inner {
+    writing-mode: vertical-rl;
+  }
+}
+footer .fax-text {
+  text-decoration: none;
+  pointer-events: none;
+}
+footer .footer-item-link {
+  display: inline-block;
+}
+@media (min-width: 768px) {
+  footer .footer-item-link {
+    display: inline-flex;
+    align-items: flex-start;
+  }
+  .is-firefox footer .footer-item-link, .is-tablet footer .footer-item-link {
+    min-width: 46px;
+  }
+}
+footer .footer-item-link span {
+  display: block;
+}
+footer .footer-item-link .text-japan {
+  font-size: 16px;
+  letter-spacing: 0.32em;
+  font-family: "Noto Serif JP";
+}
+@media (min-width: 768px) {
+  footer .footer-item-link .text-japan {
+    line-height: 1;
+    writing-mode: vertical-rl;
+  }
+}
+footer .footer-item-link .text-english {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  font-family: "Bodoni Moda";
+}
+@media (min-width: 768px) {
+  footer .footer-item-link .text-english {
+    writing-mode: vertical-lr;
+    margin-right: 9px;
+  }
+}
+@media (min-width: 768px) {
+  footer .footer-detail {
+    display: flex;
+    align-items: center;
+    margin-left: -3px;
+  }
+}
+footer .footer-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 44px;
+  padding: 1px 5px;
+  border-radius: 22px;
+  letter-spacing: 0.075em;
+  text-align: center;
+  font-family: "Noto Serif JP";
+  background-color: #2b6f51;
+  color: #fff;
+}
+@media (min-width: 768px) {
+  footer .footer-button {
+    margin-right: 46px;
+  }
+}
+footer .detail-list {
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.075em;
+}
+footer .detail-item {
+  font-weight: 600;
+  margin-right: 30px;
+}
+@media (min-width: 768px) {
+  footer .detail-item {
+    margin-right: 39px;
+  }
+}
+footer .detail-item a {
+  position: relative;
+  padding-right: 33px;
+  font-family: "Noto Serif JP";
+  color: #1b6f51;
+}
+footer .detail-item a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 18px;
+  height: 10px;
+  margin-top: -5px;
+  background: url("../img/icn_arrow_green.webp") center/contain no-repeat;
+}
+footer .footer-social {
+  display: flex;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  footer .footer-social {
+    justify-content: flex-end;
+    margin-top: 44px;
+  }
+}
+footer .social-item {
+  margin-right: 10px;
+}
+@media (min-width: 768px) {
+  footer .social-item {
+    margin: 0 8px;
+  }
+}
+footer .social-item-link {
+  display: block;
+  width: 25px;
+  height: 25px;
+  background: center/cover no-repeat;
+}
+footer .social-item-link.is-instagram {
+  background-image: url("../img/icn_instagram.webp");
+}
+footer .social-item-link.is-facebook {
+  background-image: url("../img/icn_facebook.webp");
+}
+footer .social-item-link.is-youtube {
+  background-image: url("../img/icn_youtube.webp");
+  width: 29px;
+  height: 23px;
+}
+footer .footer-bottom {
+  background: #1b6f51;
+  color: #fff;
+  padding: 20px 0;
+}
+@media (min-width: 768px) {
+  footer .footer-bottom {
+    padding: 14px 0 16px;
+  }
+}
+@media (min-width: 768px) {
+  footer .footer-bottom .footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1382px;
+  }
+}
+footer .bottom-list {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 12px;
+  letter-spacing: 0.075em;
+}
+footer .bottom-item {
+  margin-right: 20px;
+}
+footer .footer-copyright {
+  font-size: 11px;
+}
+
+div.performance {
+  background-image: url("../img/performace_heading_bg.webp");
+  background-size: cover;
+  background-position: center;
+  padding: 32px;
+}
+@media (min-width: 768px) {
+  div.performance {
+    background-size: none;
+    background-repeat: no-repeat;
+    padding: 350px 0;
+  }
+}
+@media (min-width: 768px) {
+  div.performance div.inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 107px;
+  }
+}
+div.performance div.inner div.catch {
+  font-size: 20px;
+  line-height: 50px;
+  line-height: 38px;
+  letter-spacing: 4px;
+  color: #fff;
+  text-shadow: 0 0 10px #7d7d7d, 0 0 10px #7d7d7d, 0 0 10px #7d7d7d;
+  font-family: "Noto Serif JP";
+}
+@media (min-width: 768px) {
+  div.performance div.inner div.catch {
+    font-size: 24px;
+    line-height: 50px;
+    width: 30%;
+  }
+}
+div.performance div.inner div.catch br {
+  display: none;
+}
+@media (min-width: 768px) {
+  div.performance div.inner div.catch br {
+    display: block;
+  }
+}
+div.performance div.inner div.message {
+  font-family: "Noto Serif JP";
+  margin-top: 32px;
+}
+@media (min-width: 768px) {
+  div.performance div.inner div.message {
+    flex: 1;
+  }
+}
+div.performance div.inner div.message p {
+  font-size: 15px;
+  line-height: 30px;
+  letter-spacing: 1.125px;
+  color: #fff;
+  text-shadow: 0 0 10px #7d7d7d, 0 0 10px #7d7d7d, 0 0 10px #7d7d7d;
+}
+div.company {
+  margin-top: 60px;
+}
+div.company div.pagelinks {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  border-bottom: 2px solid #eef2f2;
+}
+@media (min-width: 768px) {
+  div.company div.pagelinks {
+    display: flex;
+  }
+}
+@media (min-width: 768px) {
+  div.company div.pagelinks div.item {
+    flex: 1;
+  }
+}
+div.company div.pagelinks div.item a {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 0.1px;
+  padding: 8px;
+}
+@media (min-width: 768px) {
+  div.company div.pagelinks div.item a {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company div.pagelinks div.item a {
+    line-height: 24px;
+    text-align: center;
+  }
+}
+div.company div.pagelinks div.item a:hover {
+  text-decoration: underline;
+  text-underline-offset: 16px;
+  text-decoration-thickness: 3px;
+}
+@media (min-width: 768px) {
+  div.company div.pagelinks.container {
+    width: 1100px;
+  }
+}
+div.company section.greetings {
+  margin-top: 73px;
+}
+@media (min-width: 768px) {
+  div.company section.greetings {
+    margin-top: 144px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.greetings {
+    margin-top: 110px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.greetings div.details {
+    display: flex;
+    align-items: center;
+    gap: 71px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.greetings div.details div.image {
+    width: 38%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.greetings div.details div.image {
+    width: 41%;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.greetings div.details div.image div.title {
+    margin-bottom: -88px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.greetings div.details div.image div.title hgroup {
+    display: flex;
+  }
+}
+div.company section.greetings div.details div.image div.title hgroup span.english {
+  line-height: 37px;
+  letter-spacing: 0.16em;
+  font-family: "Bodoni Moda";
+}
+@media (min-width: 768px) {
+  div.company section.greetings div.details div.image div.title hgroup span.english {
+    writing-mode: vertical-rl;
+  }
+}
+div.company section.greetings div.details div.image div.title hgroup h2 {
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 0.32em;
+}
+@media (min-width: 768px) {
+  div.company section.greetings div.details div.image div.title hgroup h2 {
+    font-size: 24px;
+    line-height: 32px;
+    writing-mode: vertical-rl;
+  }
+}
+div.company section.greetings div.details div.image div.face {
+  margin-top: 24px;
+}
+@media (min-width: 768px) {
+  div.company section.greetings div.details div.image div.face {
+    margin-top: initial;
+  }
+}
+div.company section.greetings div.details div.image div.face img {
+  width: 100%;
+}
+div.company section.greetings div.details div.text {
+  margin-top: 42px;
+}
+@media (min-width: 768px) {
+  div.company section.greetings div.details div.text {
+    flex: 1;
+    max-width: 580px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.greetings div.details div.text {
+    margin-top: 24px;
+  }
+}
+div.company section.greetings div.details div.text div.catch {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 35px;
+  letter-spacing: 0.2em;
+}
+@media (min-width: 768px) {
+  div.company section.greetings div.details div.text div.catch {
+    font-size: 24px;
+    line-height: 40px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.greetings div.details div.text div.catch {
+    font-size: 21px;
+    line-height: 35px;
+  }
+}
+div.company section.greetings div.details div.text div.catch br {
+  display: none;
+}
+@media (min-width: 768px) {
+  div.company section.greetings div.details div.text div.catch br {
+    display: block;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.greetings div.details div.text div.catch br {
+    display: none;
+  }
+}
+div.company section.greetings div.details div.text div.message {
+  font-size: 14px;
+  line-height: 26px;
+  letter-spacing: 0.075em;
+  margin-top: 24px;
+}
+@media (min-width: 768px) {
+  div.company section.greetings div.details div.text div.message {
+    margin-top: 48px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.greetings div.details div.text div.message {
+    margin-top: 32px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.greetings div.details div.text div.message br {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.greetings.container {
+    width: 1185px;
+  }
+}
+div.company section.staff {
+  background-color: #eef2f2;
+  margin-top: 42px;
+  padding-top: 42px;
+}
+@media (min-width: 768px) {
+  div.company section.staff {
+    margin-top: -24px;
+    padding-top: 132px;
+    padding: 132px 80px 0;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.staff {
+    padding-top: 66px;
+    padding: 66px 40px 0;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.staff div.details {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 98px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.staff div.details {
+    gap: 49px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.staff div.details div.title hgroup {
+    display: flex;
+  }
+}
+div.company section.staff div.details div.title hgroup span.english {
+  line-height: 37px;
+  letter-spacing: 0.16em;
+  font-family: "Bodoni Moda";
+}
+@media (min-width: 768px) {
+  div.company section.staff div.details div.title hgroup span.english {
+    writing-mode: vertical-rl;
+  }
+}
+div.company section.staff div.details div.title hgroup h2 {
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 0.32em;
+}
+@media (min-width: 768px) {
+  div.company section.staff div.details div.title hgroup h2 {
+    font-size: 24px;
+    line-height: 32px;
+    writing-mode: vertical-rl;
+  }
+}
+div.company section.staff div.details div.lists {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 16px;
+  margin-top: 42px;
+}
+@media (min-width: 768px) {
+  div.company section.staff div.details div.lists {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 67px 62px;
+    margin-top: initial;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.staff div.details div.lists {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 992px) and (max-width: 1024px) {
+  div.company section.staff div.details div.lists {
+    gap: 32px 24px;
+  }
+}
+div.company section.staff div.details div.lists div.item div.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 16px;
+}
+div.company section.staff div.details div.lists div.item div.profile span.position {
+  font-size: 14px;
+  line-height: 32px;
+  line-height: 22px;
+  letter-spacing: 0.075em;
+  color: #1b6f51;
+}
+div.company section.staff div.details div.lists div.item div.profile span.name {
+  font-size: 18px;
+  line-height: 32px;
+  line-height: 22px;
+  letter-spacing: 0.3em;
+}
+@media (min-width: 768px) {
+  div.company section.staff div.details div.lists div.item div.profile span.name {
+    font-size: 20px;
+    line-height: 32px;
+  }
+}
+div.company section.staff div.links {
+  margin-top: 42px;
+  padding-bottom: 42px;
+}
+@media (min-width: 768px) {
+  div.company section.staff div.links {
+    margin-top: 123px;
+    padding-bottom: 90px;
+  }
+}
+div.company section.staff div.links a {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.075em;
+  color: #1b6f51;
+  border: 1px solid #1b6f51;
+  border-radius: 100px;
+  width: 90%;
+  display: block;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  padding: 12px 0;
+}
+@media (min-width: 768px) {
+  div.company section.staff div.links a {
+    width: 25%;
+    padding: 16px 0;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.staff div.links a {
+    width: 50%;
+  }
+}
+div.company section.staff div.links a img {
+  position: absolute;
+  content: "";
+  right: 16px;
+  bottom: 50%;
+  transform: translateY(50%);
+}
+@media (min-width: 768px) {
+  div.company section.staff.container {
+    width: 1380px;
+  }
+}
+div.company section.overview {
+  margin-top: 42px;
+}
+@media (min-width: 768px) {
+  div.company section.overview {
+    margin-top: 152px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.overview {
+    margin-top: 98px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.overview div.details {
+    display: flex;
+    justify-content: space-between;
+    gap: 242px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.overview div.details {
+    gap: 64px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1024px) {
+  div.company section.overview div.details {
+    gap: 100px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.overview div.details div.title hgroup {
+    display: flex;
+  }
+}
+div.company section.overview div.details div.title hgroup span.english {
+  line-height: 75px;
+  line-height: 37px;
+  letter-spacing: 0.16em;
+  font-family: "Bodoni Moda";
+}
+@media (min-width: 768px) {
+  div.company section.overview div.details div.title hgroup span.english {
+    writing-mode: vertical-rl;
+  }
+}
+div.company section.overview div.details div.title hgroup h2 {
+  font-size: 22px;
+  line-height: 28px;
+  letter-spacing: 0.32em;
+}
+@media (min-width: 768px) {
+  div.company section.overview div.details div.title hgroup h2 {
+    font-size: 24px;
+    line-height: 32px;
+    writing-mode: vertical-rl;
+  }
+}
+div.company section.overview div.details table.profile {
+  margin-top: 42px;
+}
+@media (min-width: 768px) {
+  div.company section.overview div.details table.profile {
+    margin-top: 64px;
+  }
+}
+div.company section.overview div.details table.profile tbody tr {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 768px) {
+  div.company section.overview div.details table.profile tbody tr {
+    display: block;
+  }
+}
+div.company section.overview div.details table.profile tbody tr th {
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.075em;
+  color: #606060;
+}
+@media (min-width: 768px) {
+  div.company section.overview div.details table.profile tbody tr th {
+    font-size: 15px;
+    width: 200px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.overview div.details table.profile tbody tr th {
+    width: 150px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1024px) {
+  div.company section.overview div.details table.profile tbody tr th {
+    width: 180px;
+  }
+}
+div.company section.overview div.details table.profile tbody tr td {
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.075em;
+  color: #606060;
+  margin-top: 8px;
+}
+@media (min-width: 768px) {
+  div.company section.overview div.details table.profile tbody tr td {
+    font-size: 15px;
+  }
+}
+div.company section.overview div.details table.profile tbody tr + tr {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #ccc;
+}
+@media (min-width: 768px) {
+  div.company section.overview div.details table.profile tbody tr + tr {
+    margin-top: initial;
+    padding: 16px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.overview div.details table.profile tbody tr:first-child {
+    padding: 0 16px 16px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.overview.container {
+    width: 1185px;
+  }
+}
+div.company section.history {
+  background-color: #eef2f2;
+  margin-top: 42px;
+  padding-top: 42px;
+  padding-bottom: 42px;
+}
+@media (min-width: 768px) {
+  div.company section.history {
+    margin-top: 154px;
+    padding-top: 131px;
+    padding-bottom: 128px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.history {
+    margin-top: 103px;
+    padding-top: 88px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.history div.container {
+    width: 1126px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.history div.container div.details {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 102px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.history div.container div.details {
+    gap: 56px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.history div.container div.details div.title hgroup {
+    display: flex;
+  }
+}
+div.company section.history div.container div.details div.title hgroup span.english {
+  line-height: 75px;
+  line-height: 37px;
+  letter-spacing: 0.16em;
+  font-family: "Bodoni Moda";
+}
+@media (min-width: 768px) {
+  div.company section.history div.container div.details div.title hgroup span.english {
+    writing-mode: vertical-rl;
+  }
+}
+div.company section.history div.container div.details div.title hgroup h2 {
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 0.32em;
+}
+@media (min-width: 768px) {
+  div.company section.history div.container div.details div.title hgroup h2 {
+    font-size: 24px;
+    line-height: 32px;
+    writing-mode: vertical-rl;
+  }
+}
+div.company section.history div.container div.details div.timeline {
+  position: relative;
+  margin-top: 42px;
+}
+@media (min-width: 768px) {
+  div.company section.history div.container div.details div.timeline {
+    flex: 1;
+  }
+}
+div.company section.history div.container div.details div.timeline div.item {
+  position: relative;
+}
+@media (min-width: 768px) {
+  div.company section.history div.container div.details div.timeline div.item {
+    display: flex;
+    align-items: baseline;
+    align-items: center;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.history div.container div.details div.timeline div.item div.label {
+    width: 10px;
+    height: 10px;
+    background-color: #4b4b4b;
+    border-radius: 50%;
+    order: 1;
+    position: relative;
+    margin-right: 18px;
+  }
+}
+@media (min-width: 768px) and (min-width: 768px) {
+  div.company section.history div.container div.details div.timeline div.item div.label {
+    margin-right: 29px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.history div.container div.details div.timeline div.item div.label::before {
+    position: absolute;
+    content: "";
+    width: 30px;
+    height: 1px;
+    background-color: #4b4b4b;
+    left: -30px;
+    bottom: 50%;
+    transform: translateY(50%);
+  }
+}
+@media (min-width: 768px) and (min-width: 768px) {
+  div.company section.history div.container div.details div.timeline div.item div.label::before {
+    width: 90px;
+    left: -90px;
+  }
+}
+div.company section.history div.container div.details div.timeline div.item div.year {
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: 0.03em;
+  order: 0;
+  margin-right: 30px;
+}
+@media (min-width: 768px) {
+  div.company section.history div.container div.details div.timeline div.item div.year {
+    width: 15%;
+    margin-right: 87px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.history div.container div.details div.timeline div.item div.year {
+    width: 22%;
+  }
+}
+@media (min-width: 992px) and (max-width: 1024px) {
+  div.company section.history div.container div.details div.timeline div.item div.year {
+    width: 22%;
+  }
+}
+div.company section.history div.container div.details div.timeline div.item div.year span.number {
+  font-size: 25px;
+  line-height: 28px;
+  letter-spacing: 0.15em;
+  font-family: "Bodoni Moda";
+}
+@media (min-width: 768px) {
+  div.company section.history div.container div.details div.timeline div.item div.year span.number {
+    font-size: 40px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.history div.container div.details div.timeline div.item div.year span.number {
+    font-size: 34px;
+  }
+}
+div.company section.history div.container div.details div.timeline div.item div.text {
+  flex: 1;
+  order: 3;
+}
+@media (min-width: 768px) {
+  div.company section.history div.container div.details div.timeline div.item div.text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.history div.container div.details div.timeline div.item div.text {
+    gap: 8px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.history div.container div.details div.timeline div.item div.text div.comment {
+    width: 90%;
+  }
+}
+div.company section.history div.container div.details div.timeline div.item div.text div.comment br {
+  display: none;
+}
+@media (min-width: 768px) {
+  div.company section.history div.container div.details div.timeline div.item div.text div.comment br {
+    display: block;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.history div.container div.details div.timeline div.item div.text div.comment br {
+    display: none;
+  }
+}
+div.company section.history div.container div.details div.timeline div.item div.text div.image {
+  margin-top: 8px;
+}
+div.company section.history div.container div.details div.timeline div.item + .item {
+  margin-top: 32px;
+}
+@media (min-width: 768px) {
+  div.company section.history div.container div.details div.timeline::after {
+    position: absolute;
+    content: "";
+    width: 1px;
+    height: 89%;
+    background-color: #4b4b4b;
+    left: 34.9%;
+    top: 16px;
+    transform: translateX(50%);
+  }
+}
+@media (min-width: 768px) and (min-width: 768px) {
+  div.company section.history div.container div.details div.timeline::after {
+    height: 94.5%;
+    left: 24.8%;
+    top: 48px;
+  }
+}
+@media (min-width: 768px) and (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.history div.container div.details div.timeline::after {
+    left: 38%;
+  }
+}
+@media (min-width: 768px) and (min-width: 992px) and (max-width: 1024px) {
+  div.company section.history div.container div.details div.timeline::after {
+    left: 33.8%;
+  }
+}
+div.company section.business {
+  margin-top: 42px;
+}
+@media (min-width: 768px) {
+  div.company section.business {
+    margin-top: 134px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.business {
+    margin-top: 88px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.business div.heading {
+    display: flex;
+    align-items: center;
+    gap: 113px;
+    margin-left: 80px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.business div.heading {
+    margin-left: initial;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.business div.heading div.title hgroup {
+    display: flex;
+  }
+}
+div.company section.business div.heading div.title hgroup span.english {
+  line-height: 75px;
+  line-height: 37px;
+  letter-spacing: 0.16em;
+  font-family: "Bodoni Moda";
+}
+@media (min-width: 768px) {
+  div.company section.business div.heading div.title hgroup span.english {
+    writing-mode: vertical-rl;
+  }
+}
+div.company section.business div.heading div.title hgroup h2 {
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 0.32em;
+}
+@media (min-width: 768px) {
+  div.company section.business div.heading div.title hgroup h2 {
+    font-size: 24px;
+    line-height: 32px;
+    writing-mode: vertical-rl;
+  }
+}
+div.company section.business div.heading div.message {
+  font-size: 14px;
+  line-height: 26px;
+  letter-spacing: 0.075em;
+  margin-top: 21px;
+}
+@media (min-width: 768px) {
+  div.company section.business div.heading div.message {
+    margin-top: initial;
+  }
+}
+div.company section.business div.heading div.message br {
+  display: none;
+}
+@media (min-width: 768px) {
+  div.company section.business div.heading div.message br {
+    display: block;
+  }
+}
+div.company section.business div.data {
+  margin-top: 42px;
+}
+@media (min-width: 768px) {
+  div.company section.business div.data {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 67px 33px;
+    margin-top: 56px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.business div.data {
+    gap: 40px 20px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1024px) {
+  div.company section.business div.data {
+    gap: 40px 20px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.business div.data div.item {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 2;
+    gap: 12px;
+  }
+}
+div.company section.business div.data div.item div.image img {
+  width: 100%;
+}
+div.company section.business div.data div.item div.text {
+  margin-top: 14px;
+}
+div.company section.business div.data div.item div.text h3 {
+  font-size: 18px;
+  letter-spacing: 0.075em;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  div.company section.business div.data div.item div.text h3 {
+    font-size: 20px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.business div.data div.item div.text h3 {
+    font-size: 19px;
+  }
+}
+div.company section.business div.data div.item div.text h3 small {
+  font-size: 14px;
+  line-height: 28px;
+  letter-spacing: 0.075em;
+  display: block;
+}
+div.company section.business div.data div.item div.text div.description {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0.075em;
+  color: #656565;
+  margin-top: 10px;
+}
+@media (min-width: 768px) {
+  div.company section.business div.data div.item div.text div.description {
+    height: 130px;
+    margin-top: 20px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.business div.data div.item div.text div.description {
+    height: 180px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1024px) {
+  div.company section.business div.data div.item div.text div.description {
+    height: 180px;
+  }
+}
+div.company section.business div.data div.item div.text div.description br {
+  display: none;
+}
+div.company section.business div.data div.item div.text div.link {
+  margin-top: 14px;
+}
+div.company section.business div.data div.item div.text div.link a {
+  font-size: 14px;
+  line-height: 28px;
+  letter-spacing: 0.075em;
+  color: #1b6f51;
+  border: 1px solid #1b6f51;
+  border-radius: 100px;
+  display: block;
+  text-align: center;
+  width: 90%;
+  position: relative;
+  margin: 0 auto;
+  padding: 10px;
+}
+@media (min-width: 768px) {
+  div.company section.business div.data div.item div.text div.link a {
+    padding: 16px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.business div.data div.item div.text div.link a {
+    line-height: 20px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1024px) {
+  div.company section.business div.data div.item div.text div.link a {
+    line-height: 20px;
+  }
+}
+div.company section.business div.data div.item div.text div.link a img {
+  position: absolute;
+  content: "";
+  right: 16px;
+  bottom: 50%;
+  transform: translateY(50%);
+}
+div.company section.business div.data div.item + .item {
+  margin-top: 34px;
+}
+@media (min-width: 768px) {
+  div.company section.business div.data div.item + .item {
+    margin-top: initial;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.business div.data div.item:last-child div.text div.description {
+    height: 105px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.business div.data div.item:last-child div.text div.description {
+    height: 130px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1024px) {
+  div.company section.business div.data div.item:last-child div.text div.description {
+    height: 130px;
+  }
+}
+div.company section.guidelines {
+  background-color: #eef2f2;
+  margin-top: 42px;
+  padding-top: 42px;
+  padding-bottom: 42px;
+}
+@media (min-width: 768px) {
+  div.company section.guidelines {
+    margin-top: 158px;
+    padding-top: 126px;
+    padding-bottom: 105px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.guidelines {
+    margin-top: 104px;
+    padding-top: 88px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.guidelines div.container div.details {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    gap: 69px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.guidelines div.container div.details {
+    gap: 40px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.guidelines div.container div.details div.title hgroup {
+    display: flex;
+  }
+}
+div.company section.guidelines div.container div.details div.title hgroup span.english {
+  line-height: 75px;
+  line-height: 37px;
+  letter-spacing: 0.16em;
+  font-family: "Bodoni Moda";
+}
+@media (min-width: 768px) {
+  div.company section.guidelines div.container div.details div.title hgroup span.english {
+    writing-mode: vertical-rl;
+  }
+}
+div.company section.guidelines div.container div.details div.title hgroup h2 {
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 0.32em;
+}
+@media (min-width: 768px) {
+  div.company section.guidelines div.container div.details div.title hgroup h2 {
+    font-size: 24px;
+    line-height: 32px;
+    writing-mode: vertical-rl;
+  }
+}
+div.company section.guidelines div.container div.details div.lists {
+  margin-top: 42px;
+}
+@media (min-width: 768px) {
+  div.company section.guidelines div.container div.details div.lists {
+    flex: 1;
+    display: flex;
+    gap: 34px;
+    margin-top: 84px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.guidelines div.container div.details div.lists {
+    align-items: flex-start;
+  }
+}
+@media (min-width: 992px) and (max-width: 1024px) {
+  div.company section.guidelines div.container div.details div.lists {
+    align-items: flex-start;
+  }
+}
+div.company section.guidelines div.container div.details div.lists div.item {
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  div.company section.guidelines div.container div.details div.lists div.item {
+    flex: 1;
+  }
+}
+div.company section.guidelines div.container div.details div.lists div.item h3 {
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: 0.32em;
+  padding: 12px 19px 0 12px;
+}
+@media (min-width: 768px) {
+  div.company section.guidelines div.container div.details div.lists div.item h3 {
+    font-size: 18px;
+    padding: 38px 24px 0;
+  }
+}
+div.company section.guidelines div.container div.details div.lists div.item div.vision {
+  line-height: 38px;
+  padding: 20px 32px 0;
+}
+@media (min-width: 768px) {
+  div.company section.guidelines div.container div.details div.lists div.item div.vision {
+    line-height: 38px;
+    padding: 24px 0 0 48px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.guidelines div.container div.details div.lists div.item div.vision {
+    padding: 24px 16px 0;
+  }
+}
+div.company section.guidelines div.container div.details div.lists div.item div.vision br {
+  display: none;
+}
+@media (min-width: 768px) {
+  div.company section.guidelines div.container div.details div.lists div.item div.vision br {
+    display: block;
+  }
+}
+div.company section.guidelines div.container div.details div.lists div.item div.image {
+  margin-top: 24px;
+}
+div.company section.guidelines div.container div.details div.lists div.item div.image img {
+  width: 100%;
+}
+div.company section.guidelines div.container div.details div.lists div.item ol.model {
+  padding: 20px 20px;
+}
+@media (min-width: 768px) {
+  div.company section.guidelines div.container div.details div.lists div.item ol.model {
+    padding: 24px 0 0 32px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.guidelines div.container div.details div.lists div.item ol.model {
+    padding: 24px 16px 0;
+  }
+}
+div.company section.guidelines div.container div.details div.lists div.item ol.model li {
+  letter-spacing: 1.4px;
+  line-height: 40px;
+  color: #656565;
+}
+@media (min-width: 768px) {
+  div.company section.guidelines div.container div.details div.lists div.item ol.model li {
+    line-height: 48px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.guidelines div.container div.details div.lists div.item ol.model li {
+    line-height: 30px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.guidelines div.container div.details div.lists div.item ol.model li + li {
+    margin-top: 16px;
+  }
+}
+div.company section.guidelines div.container div.details div.lists div.item + .item {
+  margin-top: 27px;
+}
+@media (min-width: 768px) {
+  div.company section.guidelines div.container div.details div.lists div.item + .item {
+    margin-top: initial;
+  }
+}
+div.company section.sdgs {
+  background-image: url("img/company_about_bg.webp");
+  background-position: center;
+  background-size: cover;
+  margin-top: 42px;
+  padding-top: 42px;
+  padding-bottom: 42px;
+}
+@media (min-width: 768px) {
+  div.company section.sdgs {
+    margin-top: 97px;
+    padding: 164px 0 150px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.sdgs {
+    margin-top: 65px;
+    padding: 100px 0;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.sdgs div.container {
+    width: 1000px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.sdgs div.container div.details {
+    display: flex;
+    justify-content: center;
+    gap: 139px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.sdgs div.container div.details {
+    gap: 64px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1024px) {
+  div.company section.sdgs div.container div.details {
+    gap: 64px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.sdgs div.container div.details div.title hgroup {
+    display: flex;
+  }
+}
+div.company section.sdgs div.container div.details div.title hgroup span.english {
+  line-height: 75px;
+  line-height: 37px;
+  letter-spacing: 0.16em;
+  font-family: "Bodoni Moda";
+  color: #fff;
+}
+@media (min-width: 768px) {
+  div.company section.sdgs div.container div.details div.title hgroup span.english {
+    writing-mode: vertical-rl;
+  }
+}
+div.company section.sdgs div.container div.details div.title hgroup h2 {
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 0.32em;
+  color: #fff;
+}
+@media (min-width: 768px) {
+  div.company section.sdgs div.container div.details div.title hgroup h2 {
+    font-size: 24px;
+    line-height: 32px;
+    writing-mode: vertical-rl;
+  }
+}
+div.company section.sdgs div.container div.details div.text {
+  margin-top: 42px;
+}
+@media (min-width: 768px) {
+  div.company section.sdgs div.container div.details div.text {
+    max-width: 665px;
+  }
+}
+div.company section.sdgs div.container div.details div.text div.decralation {
+  line-height: 28px;
+  letter-spacing: 0.075em;
+  color: #fff;
+  background-color: #1b6f51;
+  display: inline-block;
+  padding: 0 8px;
+}
+div.company section.sdgs div.container div.details div.text div.message {
+  font-size: 13px;
+  color: #fff;
+  margin-top: 20px;
+}
+@media (min-width: 768px) {
+  div.company section.sdgs div.container div.details div.text div.message {
+    margin-top: 45px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.sdgs div.container div.details div.text div.message {
+    margin-top: 30px;
+  }
+}
+div.company section.sdgs div.container div.details div.text div.logo {
+  margin-top: 14px;
+}
+@media (min-width: 768px) {
+  div.company section.sdgs div.container div.details div.text div.logo {
+    margin-top: 23px;
+  }
+}
+div.company section.local {
+  margin-top: 42px;
+}
+@media (min-width: 768px) {
+  div.company section.local {
+    margin-top: 148px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.local {
+    margin-top: 100px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.local div.details {
+    display: flex;
+    gap: 139px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1024px) {
+  div.company section.local div.details {
+    gap: 100px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.local div.details div.title hgroup {
+    display: flex;
+  }
+}
+div.company section.local div.details div.title hgroup span.english {
+  line-height: 75px;
+  line-height: 37px;
+  letter-spacing: 0.16em;
+  font-family: "Bodoni Moda";
+}
+@media (min-width: 768px) {
+  div.company section.local div.details div.title hgroup span.english {
+    writing-mode: vertical-rl;
+  }
+}
+div.company section.local div.details div.title hgroup h2 {
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: 0.32em;
+}
+@media (min-width: 768px) {
+  div.company section.local div.details div.title hgroup h2 {
+    font-size: 24px;
+    line-height: 32px;
+    writing-mode: vertical-rl;
+  }
+}
+div.company section.local div.details div.lists {
+  margin-top: 42px;
+}
+@media (min-width: 768px) {
+  div.company section.local div.details div.lists {
+    margin-top: 84px;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.local div.details div.lists div.item {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.local div.details div.lists div.item {
+    display: block;
+    width: 90%;
+  }
+}
+@media (min-width: 768px) {
+  div.company section.local div.details div.lists div.item div.image {
+    flex: 1;
+  }
+}
+div.company section.local div.details div.lists div.item div.image img {
+  width: 100%;
+}
+div.company section.local div.details div.lists div.item dl.text {
+  margin-top: 16px;
+}
+@media (min-width: 768px) {
+  div.company section.local div.details div.lists div.item dl.text {
+    width: 63%;
+    margin-top: initial;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div.company section.local div.details div.lists div.item dl.text {
+    width: initial;
+    margin-top: 24px;
+  }
+}
+div.company section.local div.details div.lists div.item dl.text dt {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.075em;
+}
+div.company section.local div.details div.lists div.item dl.text dd {
+  font-size: 13px;
+  line-height: 24px;
+  letter-spacing: 0.075em;
+  margin-top: 4px;
+}
+@media (min-width: 768px) {
+  div.company section.local div.details div.lists div.item dl.text dd {
+    margin-top: 16px;
+  }
+}
+div.company section.local div.details div.lists div.item + .item {
+  margin-top: 33px;
+}
+@media (min-width: 768px) {
+  div.company section.local div.details div.lists div.item + .item {
+    margin-top: 48px;
+  }
+}
+section.spec {
+  margin-top: 65px;
+}
+@media (min-width: 768px) {
+  section.spec {
+    margin-top: 205px;
+  }
+}
+@media (min-width: 768px) {
+  section.spec div.items div.container {
+    width: 1170px;
+  }
+}
+@media (min-width: 768px) {
+  section.spec div.items div.container div.blocks {
+    display: flex;
+    justify-content: center;
+    gap: 67px;
+  }
+}
+@media (min-width: 768px) {
+  section.spec div.items div.container div.blocks div.image {
+    width: 50%;
+  }
+}
+section.spec div.items div.container div.blocks div.image img {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  section.spec div.items div.container div.blocks div.text {
+    flex: 1;
+  }
+}
+section.spec div.items div.container div.blocks div.text div.heading span.en {
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 1.05px;
+  color: #1b6f51;
+  font-family: "Bodoni Moda";
+  margin-left: 4px;
+}
+section.spec div.items div.container div.blocks div.text div.heading div.number {
+  font-size: 40px;
+  line-height: 40px;
+  letter-spacing: 1.05px;
+  color: #1b6f51;
+  font-family: "Bodoni Moda";
+  font-weight: 500;
+  margin-top: 4px;
+}
+@media (min-width: 768px) {
+  section.spec div.items div.container div.blocks div.text div.heading div.number {
+    font-size: 80px;
+    line-height: 75px;
+  }
+}
+section.spec div.items div.container div.blocks div.text dl.description {
+  margin-top: 40px;
+}
+@media (min-width: 768px) {
+  section.spec div.items div.container div.blocks div.text dl.description {
+    margin-top: 78px;
+  }
+}
+section.spec div.items div.container div.blocks div.text dl.description dt h2 {
+  font-size: 20px;
+  line-height: 40px;
+  letter-spacing: 4px;
+  font-family: "Noto Serif JP";
+}
+@media (min-width: 768px) {
+  section.spec div.items div.container div.blocks div.text dl.description dt h2 {
+    font-size: 24px;
+  }
+}
+section.spec div.items div.container div.blocks div.text dl.description dd {
+  margin-top: 20px;
+}
+@media (min-width: 768px) {
+  section.spec div.items div.container div.blocks div.text dl.description dd {
+    margin-top: 48px;
+  }
+}
+section.spec div.items div.container div.blocks div.text dl.description dd p {
+  font-size: 14px;
+  line-height: 26px;
+  letter-spacing: 1.05px;
+  font-family: "Noto Serif JP";
+  color: #656565;
+}
+@media (min-width: 768px) {
+  section.spec div.items div.container div.blocks div.text dl.description dd p + p {
+    margin-top: 2em;
+  }
+}
+section.spec div.items + .items {
+  margin-top: 48px;
+}
+@media (min-width: 768px) {
+  section.spec div.items + .items {
+    margin-top: 223px;
+  }
+}
+@media (min-width: 768px) {
+  section.spec div.items:nth-child(odd) {
+    position: relative;
+  }
+}
+@media (min-width: 768px) {
+  section.spec div.items:nth-child(odd)::before {
+    position: absolute;
+    content: "";
+    background-image: url("../img/performace_spec_bg.webp");
+    background-size: cover;
+    width: 1170px;
+    height: 438px;
+    left: 0;
+    bottom: 36%;
+    transform: translateY(50%);
+    z-index: -1;
+  }
+}
+@media (min-width: 768px) {
+  section.spec div.items:nth-child(odd) div.container div.blocks div.text div.heading {
+    margin-left: 16px;
+  }
+}
+@media (min-width: 768px) {
+  section.spec div.items:nth-child(even) {
+    position: relative;
+  }
+}
+section.spec div.items:nth-child(even)::before {
+  position: absolute;
+  content: "";
+  background-image: url("../img/performace_spec_bg.webp");
+  background-size: cover;
+  width: 1170px;
+  height: 438px;
+  right: 0;
+  bottom: 36%;
+  transform: translateY(50%);
+  z-index: -1;
+}
+@media (min-width: 768px) {
+  section.spec div.items:nth-child(even) div.container div.blocks {
+    flex-direction: row-reverse;
+  }
+}
+@media (min-width: 768px) {
+  section.spec div.items:nth-child(even) div.container div.blocks div.text div.heading {
+    display: table;
+    margin-left: auto;
+  }
+}
+
+div.section-common-banner {
+  margin-top: 75px;
+}
+@media (min-width: 768px) {
+  div.section-common-banner {
+    margin-top: 207px;
+  }
+}/*# sourceMappingURL=style.css.map */
